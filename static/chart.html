@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Monitoring</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+    </script>
+
+</head>
+   <body>
+     <div class="card p-5 text-center text-light bg-info m-5">
+         <img src="/static/images/heart-rate-red.jpg" width="100px" class="img-rounded mx-auto" alt="Heart image">
+         <h2> YOUR RESTING HEART PULSE PER MINUTE GRAPH</h2>
+    </div>
+    <div class="text-center">
+       <h2> Interpretation of your heart pulse graph. </h2>
+       <p> Look at the range of ages in the table below to interprete your heart pulse graph.</p>
+    </div>
+ 
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+     <div class="container my-3">
+       <h3 class="text-danger">Please Check below to find your Heart rate performance according to age</h3>
+        <div class="row">
+        <div class="col">
+          <table class="table table-bordered">
+           <thead>
+             <tr class="danger"> 
+              <th>Age(for men)</th>
+              <th>18-25</th>
+              <th> 26-35</th>
+              <th>36-45</th>
+              <th>46-55</th>
+              <th>56-65</th>
+              <th>65+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             <td>Athlete</td>
+             <td>49-55</td>
+             <td>49-54</td>
+             <td>50-56</td>
+             <td>50-57</td>
+             <td>51-56</td>
+             <td>50-55</td>
+          </tr>      
+     
+          <tr class="active">
+            <td>Excellent</td>
+            <td>56-61</td>
+            <td>55-61</td>
+            <td>57-62</td>
+            <td>58-63</td>
+            <td>57-61</td>
+            <td>56-61</td>
+      
+          </tr>
+          <tr class="sucess">
+            <td>Great</td>
+            <td>62-65</td>
+            <td>62-65</td>
+            <td>63-66</td>
+            <td>64-67</td>
+            <td>62-67</td>
+            <td>62-65</td>
+        
+          </tr>
+          <tr class="success">
+            <td>Good</td>
+            <td>66-69</td>
+            <td>66-70</td>
+            <td>67-70</td>
+            <td>68-71</td>
+            <td>68-71</td>
+            <td>66-69</td>
+        
+          </tr>
+          <tr class="info">
+            <td>Average</td>
+            <td>70-73</td>
+            <td>71-74</td>
+            <td>71-75</td>
+            <td>72-76</td>
+            <td>72-75</td>
+            <td>70-73</td>
+
+          </tr>
+          <tr class="warning">
+            <td>Below Average</td>
+            <td>74-81</td>
+            <td>75-81</td>
+            <td>76-82</td>
+            <td>77-83</td>
+            <td>76-81</td>
+            <td>74-79</td>
+          </tr>
+
+          <tr class="danger">
+            <td>Poor</td>
+            <td>82+</td>
+            <td>82+</td>
+            <td>83+</td>
+            <td>84+</td>
+            <td>82+</td>
+            <td>80+</td>
+          </tr>
+         </thead>
+        <tbody> 
+       </table>
+      </div>
+
+      <div class="col">
+        <table class="table table-bordered">
+          <thead>
+            <tr class="Danger">
+              <th>Age(for women)</th>
+              <th>18-25</th>
+              <th> 26-35</th>
+              <th>36-45</th>
+              <th>46-55</th>
+              <th>56-65</th>
+              <th>65+</th>
+            </tr>
+           </thead>
+
+           <tbody>
+            <tr>
+            <tr class="active">
+              <td>Athlete</td>
+              <td>54-60</td>
+              <td>54-59</td>
+              <td>54-59</td>
+              <td>54-60</td>
+              <td>54-59</td>
+              <td>54-59</td>
+            </tr>
+            <tr class="sucess">
+              <td>Excellent</td>
+              <td>61-65</td>
+              <td>60-64</td>
+              <td>60-64</td>
+              <td>61-65</td>
+              <td>60-64</td>
+              <td>60-64</td>
+
+            </tr>
+              <tr class="sucess">
+              <td>Great</td>
+              <td>66-69</td>
+              <td>65-68</td>
+              <td>65-69</td>
+              <td>66-69</td>
+              <td>65-68</td>
+              <td>65-68</td>
+             <tr>
+             <tr class="sucess">
+              <td>Good</td>
+              <td>70-73</td>
+              <td>69-72</td>
+              <td>70-73</td>
+              <td>70-73</td>
+              <td>69-73</td>
+              <td>69-72</td>
+
+            </tr>
+            <tr class="info">
+              <td>Average</td>
+              <td>74-78</td>
+              <td>73-76</td>
+              <td>74-78</td>
+              <td>74-77</td>
+              <td>74-77</td>
+              <td>73-76</td>
+     
+            </tr>
+            <tr class="warning">
+              <td>Below Average</td>
+              <td>79-84</td>
+              <td>77-82</td>
+              <td>79-84</td>
+              <td>78-83</td>
+              <td>78-83</td>
+              <td>77-84</td>
+
+           </tr>
+           <tr class="danger">
+             <td>Poor</td>
+             <td>85+</td>
+             <td>83+</td>
+             <td>85+</td>
+             <td>84+</td>
+             <td>84+</td>
+             <td>85+</td>
+           </tr>
+          </tbody>
+
+        </table>
+      </div>
+     </div>
+
+ </div> 
+
+<footer class="bg-info text-light text-center p-5">
+   <p> The REJs Team</p>
+   <p>Copy right @2019 | All right reserved</p>
+   
+</footer> 
+   
+
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const config = {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Random Dataset",
+                    backgroundColor: 'rgba(255, 99, 132, 0.02)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [],
+                    fill: true,
+                }],
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Your heart rate pulse graph'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Time'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Bpm'
+                        }
+                    }]
+                }
+            }
+        };
+        const context = document.getElementById('canvas').getContext('2d');
+        const lineChart = new Chart(context, config);
+        const source = new EventSource("/chart-data");
+        source.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            if (config.data.labels.length === 20) {
+                config.data.labels.shift();
+                config.data.datasets[0].data.shift();
+            }
+            config.data.labels.push(data.time);
+            config.data.datasets[0].data.push(data.value);
+            lineChart.update();
+        }
+    });
+</script>
+        
+</body>
+</html>
